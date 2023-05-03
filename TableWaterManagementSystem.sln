@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4B0A36EC-963C-4749-BFAF-D4F2144EC70B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{CCBF24F3-8950-487D-ADA9-D13549DB638B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{10FA1C29-5A0E-47FA-B80C-57F77E0A2FC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{6D00B41C-08D3-47D2-BE2A-BE83FE3744B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web_ui", "web_ui", "{06B42188-B363-489B-9A23-B3881453AD13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWMS.Domain", "src\backend\core\TWMS.Domain\TWMS.Domain.csproj", "{755C61C4-4406-42AB-BCF9-1F2239E1D008}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWMS.Application", "src\backend\core\TWMS.Application\TWMS.Application.csproj", "{4B51563D-0809-45D6-A36B-83F72A12D57C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWMS.WebAPI", "src\backend\web_ui\TWMS.WebAPI\TWMS.WebAPI.csproj", "{0DE4C555-9691-430E-A863-90996431CB14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{755C61C4-4406-42AB-BCF9-1F2239E1D008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{755C61C4-4406-42AB-BCF9-1F2239E1D008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{755C61C4-4406-42AB-BCF9-1F2239E1D008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{755C61C4-4406-42AB-BCF9-1F2239E1D008}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B51563D-0809-45D6-A36B-83F72A12D57C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B51563D-0809-45D6-A36B-83F72A12D57C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B51563D-0809-45D6-A36B-83F72A12D57C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B51563D-0809-45D6-A36B-83F72A12D57C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DE4C555-9691-430E-A863-90996431CB14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DE4C555-9691-430E-A863-90996431CB14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DE4C555-9691-430E-A863-90996431CB14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DE4C555-9691-430E-A863-90996431CB14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CCBF24F3-8950-487D-ADA9-D13549DB638B} = {4B0A36EC-963C-4749-BFAF-D4F2144EC70B}
+		{10FA1C29-5A0E-47FA-B80C-57F77E0A2FC6} = {CCBF24F3-8950-487D-ADA9-D13549DB638B}
+		{6D00B41C-08D3-47D2-BE2A-BE83FE3744B9} = {CCBF24F3-8950-487D-ADA9-D13549DB638B}
+		{06B42188-B363-489B-9A23-B3881453AD13} = {CCBF24F3-8950-487D-ADA9-D13549DB638B}
+		{755C61C4-4406-42AB-BCF9-1F2239E1D008} = {10FA1C29-5A0E-47FA-B80C-57F77E0A2FC6}
+		{4B51563D-0809-45D6-A36B-83F72A12D57C} = {10FA1C29-5A0E-47FA-B80C-57F77E0A2FC6}
+		{0DE4C555-9691-430E-A863-90996431CB14} = {06B42188-B363-489B-9A23-B3881453AD13}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F9B40DFD-BA53-4AE7-9E88-6AFD6BA9721A}
+	EndGlobalSection
+EndGlobal
