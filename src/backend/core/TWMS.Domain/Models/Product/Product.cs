@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,9 @@ namespace TWMS.Domain.Models.Product
     {
         public string Name { get; set; }
         public string Description { get; set; } = string.Empty;
-        public int InventoryId { get; set; }
+/*        public int InventoryId { get; set; }
 
-        public Inventory Inventory { get; set; }
+        public Inventory Inventory { get; set; }*/
         public ICollection<OrderItem> OrderItems { get; set; }
     }
 }
