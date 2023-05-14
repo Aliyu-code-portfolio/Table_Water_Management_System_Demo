@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TWMS.Application.CommonContracts;
 using TWMS.Infrastructure.Persistence.DBContext;
+using TWMS.Domain.Commons;
 
 namespace TWMS.Infrastructure.Persistence.Repositories
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public class RepositoryBase<T> : IRepositoryBase<T> where T : class,IBaseEntity, new()
     {
         private AppDbContext _AppDbContext;
 
@@ -16,25 +18,36 @@ namespace TWMS.Infrastructure.Persistence.Repositories
         {
             _AppDbContext = appDbContext;
         }
-        public void Add(T entity) => _AppDbContext.Set<T>().Add(entity);
-
-        public void DeleteById(T entity)=>_AppDbContext.Set<T>().Remove(entity);
-
-        public IQueryable<Task<T>> GetAllAsync(bool trackChanges)
+        public void Add(T entity)
         {
-            throw new NotImplementedException();
+            _AppDbContext.Set<T>().Add(entity);
+            _AppDbContext.SaveChanges();
+        } 
+
+        public void Delete(T entity)=>_AppDbContext.Set<T>().Remove(entity);
+
+        public async Task DeleteById(int id)
+        {
+            T? data = await GetByIdAsync(false,id);
+            Delete(data);
         }
 
-        public Task<T> GetByIdAsync(bool trackChanges, int id)
+        public async Task<IEnumerable<T>> GetAllAsync(bool trackChanges)
         {
-            throw new NotImplementedException();
-            //return _AppDbContext.Set<T>().Where
+            return trackChanges? await _AppDbContext.Set<T>().AsTracking().ToListAsync():
+                   await _AppDbContext.Set<T>().AsNoTracking().ToListAsync();
+        }
+
+        public async Task<T?> GetByIdAsync(bool trackChanges, int id)
+        {
+            return trackChanges? await _AppDbContext.Set<T>().AsTracking().FirstOrDefaultAsync(n => n.Id == id): 
+                                 await _AppDbContext.Set<T>().AsNoTracking().FirstOrDefaultAsync(n=>n.Id==id);
 
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _AppDbContext.Set<T>().Update(entity);
         }
     }
 }
