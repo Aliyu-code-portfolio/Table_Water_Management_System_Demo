@@ -22,6 +22,6 @@ namespace TWMS.Domain.Models.Customer
         public int CustomerAddressId { get; set; }
 
         public CustomerAddress CustomerAddress { get; set; }
-        public ICollection<OrderItem> Orders { get; set; }
+        //public ICollection<OrderItem> Orders { get; set; }
     }
 }

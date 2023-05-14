@@ -10,7 +10,7 @@ namespace TWMS.Domain.Models.Product
     public class Inventory:AuditableBaseEntity
     {
         public int Quantity { get; set; }
-        public int ProductTypeId { get; set; }
+       // public int ProductTypeId { get; set; }
         public double ProductionCost { get; set; }
         public DateTime DateProduced { get; set; }
         public double RetailPricePerUnit { get; set; }

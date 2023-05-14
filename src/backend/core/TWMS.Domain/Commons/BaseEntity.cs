@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TWMS.Domain.Commons
 {
-    public abstract class BaseEntity
+    public interface IBaseEntity
     {
         [Key]
         public int Id { get; set; }

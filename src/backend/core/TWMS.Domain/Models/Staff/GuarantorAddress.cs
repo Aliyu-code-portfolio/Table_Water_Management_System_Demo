@@ -22,6 +22,6 @@ namespace TWMS.Domain.Models.Staff
         public int Zip_PostalCode { get; set; }
         [StringLength(20)]
         public string? State_Province { get; set; }
-        public ICollection<Guarantor> Guarantors { get; set; }
+        //public ICollection<Guarantor> Guarantors { get; set; }
     }
 }

@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace TWMS.Domain.Commons
 {
-    public abstract class AuditableBaseEntity:BaseEntity
+    public abstract class AuditableBaseEntity:IBaseEntity
     {
+        public int Id { get; set; }
         [StringLength(50)]
         public string? ModifiedBy { get; set; }
         public DateTime DateModified { get; set; }

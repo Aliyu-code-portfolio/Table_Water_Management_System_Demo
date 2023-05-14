@@ -23,15 +23,17 @@ namespace TWMS.Domain.Models.Staff
         [StringLength(50)]
         public string? EmailAddress { get; set; }
         //Foreign key
+        [ForeignKey(nameof(StaffAddress))]
         public int StaffAddressId { get; set; }
         public int JobTitleId { get; set; }
         [Column(TypeName = "money")]
         public decimal Salary { get; set; }
         public DateTime DateJoined { get; set; }
         //Foreign key
-       // [ForeignKey(nameof(Staff))]
-        public int ReportsTo { get; set; }
+        // [ForeignKey(nameof(Staff))]
+        //public int ReportsTo { get; set; }
         //Foreign key
+        [ForeignKey(nameof(Guarantor))]
         public int GuarantorId { get; set; }
 
         public Guarantor Guarantor { get; set; }
