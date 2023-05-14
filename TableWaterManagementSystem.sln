@@ -25,6 +25,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TWMS.Data", "src\backend\da
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{F45DF8B7-B334-4533-A339-DA6AFF054B58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWMS.Infrastructure_Help", "src\backend\infrastructure\TWMS.Infrastructure_Help\TWMS.Infrastructure_Help.csproj", "{4626A065-271E-4612-A010-1CD404A8A04C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{ACE36303-3EA5-4F5F-A41D-47BB1BE34066}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACE36303-3EA5-4F5F-A41D-47BB1BE34066}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ACE36303-3EA5-4F5F-A41D-47BB1BE34066}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4626A065-271E-4612-A010-1CD404A8A04C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4626A065-271E-4612-A010-1CD404A8A04C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4626A065-271E-4612-A010-1CD404A8A04C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4626A065-271E-4612-A010-1CD404A8A04C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{BDC071AE-57E1-4570-ADF1-0012E9A0C0DF} = {6D00B41C-08D3-47D2-BE2A-BE83FE3744B9}
 		{ACE36303-3EA5-4F5F-A41D-47BB1BE34066} = {F45DF8B7-B334-4533-A339-DA6AFF054B58}
 		{F45DF8B7-B334-4533-A339-DA6AFF054B58} = {CCBF24F3-8950-487D-ADA9-D13549DB638B}
+		{4626A065-271E-4612-A010-1CD404A8A04C} = {6D00B41C-08D3-47D2-BE2A-BE83FE3744B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9B40DFD-BA53-4AE7-9E88-6AFD6BA9721A}

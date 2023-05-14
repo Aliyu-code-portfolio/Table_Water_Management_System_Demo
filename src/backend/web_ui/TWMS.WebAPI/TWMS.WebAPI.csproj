@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\infrastructure\TWMS.Infrastructure\TWMS.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\infrastructure\TWMS.Infrastructure_Help\TWMS.Infrastructure_Help.csproj" />
   </ItemGroup>
 
 </Project>
