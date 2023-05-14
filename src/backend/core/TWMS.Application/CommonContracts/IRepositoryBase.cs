@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TWMS.Domain.Commons;
 
 namespace TWMS.Application.CommonContracts
 {
-    public interface IRepositoryBase<T>
+    public interface IRepositoryBase<T> where T : class
     {
         Task<T> GetByIdAsync(bool trackChanges, int id);
-        IQueryable<Task<T>> GetAllAsync(bool trackChanges);
+        Task<IEnumerable<T>> GetAllAsync(bool trackChanges);
         void Add(T entity);
         void Update(T  entity);
-        void DeleteById(T entity);
+        void Delete(T entity);
+        Task DeleteById(int id);
     }
 }
