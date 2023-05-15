@@ -32,10 +32,10 @@ namespace TWMS.Infrastructure.Persistence.Repositories
             Delete(data);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync(bool trackChanges)
+        public async Task<IQueryable<T>> GetAllAsync(bool trackChanges)
         {
-            return trackChanges? await _AppDbContext.Set<T>().AsTracking().ToListAsync():
-                   await _AppDbContext.Set<T>().AsNoTracking().ToListAsync();
+            return trackChanges?  _AppDbContext.Set<T>().AsTracking():
+                    _AppDbContext.Set<T>().AsNoTracking();
         }
 
         public async Task<T?> GetByIdAsync(bool trackChanges, int id)

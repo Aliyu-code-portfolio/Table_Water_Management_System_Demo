@@ -4,13 +4,13 @@ using TWMS.Application.Contracts;
 using TWMS.Infrastructure.Persistence.DBContext;
 using TWMS.Infrastructure.Persistence.Repositories;
 using TWMS.Infrastructure.Services;
+using TWMS.WebAPI.ServiceExtension;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
-builder.Services.AddScoped<ICustomerService,CustomerService>();
-builder.Services.AddScoped<IStaffService,StaffService>();
+builder.Services.ConfigureServices();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -17,6 +17,6 @@ namespace TWMS.Application.Contracts
         Task<IEnumerable<Customers>> GetCustomersBySearchAsync(string searchTerm);
         Task<IEnumerable<Customers>> GetTopCustomersAsync(int number);
         Task<IEnumerable<Customers>> GetCustomersByOrderTotalAsync(decimal minTotal);
-        Task<Customers> GetOrderTotalAmountAsync(int customerId);
+        Task<decimal> GetCustomerOrderTotalAmountAsync(int customerId);
     }
 }

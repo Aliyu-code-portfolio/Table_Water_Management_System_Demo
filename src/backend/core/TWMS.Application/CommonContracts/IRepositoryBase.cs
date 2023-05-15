@@ -10,7 +10,7 @@ namespace TWMS.Application.CommonContracts
     public interface IRepositoryBase<T> where T : class
     {
         Task<T> GetByIdAsync(bool trackChanges, int id);
-        Task<IEnumerable<T>> GetAllAsync(bool trackChanges);
+        Task<IQueryable<T>> GetAllAsync(bool trackChanges);
         void Add(T entity);
         void Update(T  entity);
         void Delete(T entity);
