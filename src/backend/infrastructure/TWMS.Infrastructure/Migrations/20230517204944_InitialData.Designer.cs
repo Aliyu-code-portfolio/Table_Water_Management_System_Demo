@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TWMS.Infrastructure.Persistence.DBContext;
 
@@ -10,10 +11,12 @@ using TWMS.Infrastructure.Persistence.DBContext;
 
 namespace TWMS.Infrastructure.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(RepositoryContext))]
+    [Migration("20230517204944_InitialData")]
+    partial class InitialData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,15 +76,165 @@ namespace TWMS.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CustomerAddresses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AreaLocality = "Area 1",
+                            BuildingNumber = 99,
+                            City = "City 1",
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 5, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3088),
+                            DateModified = new DateTime(2023, 4, 25, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3085),
+                            Landmark = "Landmark 1",
+                            ModifiedBy = "John Doe",
+                            State_Province = "State 1",
+                            StreetName = "Street 1",
+                            Zip_PostalCode = 57185
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AreaLocality = "Area 2",
+                            BuildingNumber = 29,
+                            City = "City 2",
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 4, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3108),
+                            DateModified = new DateTime(2023, 4, 20, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3106),
+                            Landmark = "Landmark 2",
+                            ModifiedBy = "John Doe",
+                            State_Province = "State 2",
+                            StreetName = "Street 2",
+                            Zip_PostalCode = 15239
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AreaLocality = "Area 3",
+                            BuildingNumber = 66,
+                            City = "City 3",
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 4, 20, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3120),
+                            DateModified = new DateTime(2023, 5, 8, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3117),
+                            Landmark = "Landmark 3",
+                            ModifiedBy = "John Doe",
+                            State_Province = "State 3",
+                            StreetName = "Street 3",
+                            Zip_PostalCode = 22578
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AreaLocality = "Area 4",
+                            BuildingNumber = 45,
+                            City = "City 4",
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 13, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3132),
+                            DateModified = new DateTime(2023, 5, 14, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3129),
+                            Landmark = "Landmark 4",
+                            ModifiedBy = "John Doe",
+                            State_Province = "State 4",
+                            StreetName = "Street 4",
+                            Zip_PostalCode = 83692
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AreaLocality = "Area 5",
+                            BuildingNumber = 70,
+                            City = "City 5",
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 15, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3144),
+                            DateModified = new DateTime(2023, 4, 30, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3141),
+                            Landmark = "Landmark 5",
+                            ModifiedBy = "John Doe",
+                            State_Province = "State 5",
+                            StreetName = "Street 5",
+                            Zip_PostalCode = 17667
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AreaLocality = "Area 6",
+                            BuildingNumber = 48,
+                            City = "City 6",
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 4, 23, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3156),
+                            DateModified = new DateTime(2023, 4, 24, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3154),
+                            Landmark = "Landmark 6",
+                            ModifiedBy = "John Doe",
+                            State_Province = "State 6",
+                            StreetName = "Street 6",
+                            Zip_PostalCode = 22509
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AreaLocality = "Area 7",
+                            BuildingNumber = 88,
+                            City = "City 7",
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 1, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3166),
+                            DateModified = new DateTime(2023, 5, 8, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3164),
+                            Landmark = "Landmark 7",
+                            ModifiedBy = "John Doe",
+                            State_Province = "State 7",
+                            StreetName = "Street 7",
+                            Zip_PostalCode = 68152
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AreaLocality = "Area 8",
+                            BuildingNumber = 10,
+                            City = "City 8",
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 4, 21, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3176),
+                            DateModified = new DateTime(2023, 5, 11, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3173),
+                            Landmark = "Landmark 8",
+                            ModifiedBy = "John Doe",
+                            State_Province = "State 8",
+                            StreetName = "Street 8",
+                            Zip_PostalCode = 55500
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AreaLocality = "Area 9",
+                            BuildingNumber = 44,
+                            City = "City 9",
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 4, 24, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3185),
+                            DateModified = new DateTime(2023, 4, 21, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3183),
+                            Landmark = "Landmark 9",
+                            ModifiedBy = "John Doe",
+                            State_Province = "State 9",
+                            StreetName = "Street 9",
+                            Zip_PostalCode = 40656
+                        },
+                        new
+                        {
+                            Id = 10,
+                            AreaLocality = "Area 10",
+                            BuildingNumber = 16,
+                            City = "City 10",
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 16, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3196),
+                            DateModified = new DateTime(2023, 5, 12, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(3194),
+                            Landmark = "Landmark 10",
+                            ModifiedBy = "John Doe",
+                            State_Province = "State 10",
+                            StreetName = "Street 10",
+                            Zip_PostalCode = 47143
+                        });
                 });
 
             modelBuilder.Entity("TWMS.Domain.Models.Customer.Customers", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
@@ -121,6 +274,138 @@ namespace TWMS.Infrastructure.Migrations
                     b.HasIndex("CustomerAddressId");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("393f3cc7-d21c-4c7f-996e-98d0c8d5e8b0"),
+                            Birthday = new DateTime(2005, 5, 17, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2344),
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 1, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2327),
+                            CustomerAddressId = 1,
+                            DateModified = new DateTime(2023, 5, 7, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2316),
+                            EmailAddress = "customer1@example.com",
+                            FullName = "Customer 1",
+                            ModifiedBy = "John Doe",
+                            PhoneNo = "1234567890"
+                        },
+                        new
+                        {
+                            Id = new Guid("68595538-779b-46b0-bd58-2f0c8027bfa0"),
+                            Birthday = new DateTime(1995, 5, 17, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2360),
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 15, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2358),
+                            CustomerAddressId = 2,
+                            DateModified = new DateTime(2023, 4, 27, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2356),
+                            EmailAddress = "customer2@example.com",
+                            FullName = "Customer 2",
+                            ModifiedBy = "John Doe",
+                            PhoneNo = "1234567890"
+                        },
+                        new
+                        {
+                            Id = new Guid("0352fcda-393a-48a0-83a0-9178520f6af6"),
+                            Birthday = new DateTime(1999, 5, 17, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2367),
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 14, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2365),
+                            CustomerAddressId = 3,
+                            DateModified = new DateTime(2023, 5, 13, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2364),
+                            EmailAddress = "customer3@example.com",
+                            FullName = "Customer 3",
+                            ModifiedBy = "John Doe",
+                            PhoneNo = "1234567890"
+                        },
+                        new
+                        {
+                            Id = new Guid("e75795ef-cbe8-4a84-8de1-9e493281bab8"),
+                            Birthday = new DateTime(1968, 5, 17, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2374),
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 12, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2373),
+                            CustomerAddressId = 4,
+                            DateModified = new DateTime(2023, 5, 2, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2372),
+                            EmailAddress = "customer4@example.com",
+                            FullName = "Customer 4",
+                            ModifiedBy = "John Doe",
+                            PhoneNo = "1234567890"
+                        },
+                        new
+                        {
+                            Id = new Guid("a4f21388-e64b-4263-9c57-ba4e8367dab7"),
+                            Birthday = new DateTime(1998, 5, 17, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2396),
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 4, 29, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2395),
+                            CustomerAddressId = 5,
+                            DateModified = new DateTime(2023, 5, 16, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2393),
+                            EmailAddress = "customer5@example.com",
+                            FullName = "Customer 5",
+                            ModifiedBy = "John Doe",
+                            PhoneNo = "1234567890"
+                        },
+                        new
+                        {
+                            Id = new Guid("ff676444-0d3c-4eea-8d27-c97cea12ee17"),
+                            Birthday = new DateTime(1985, 5, 17, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2406),
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 4, 22, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2404),
+                            CustomerAddressId = 6,
+                            DateModified = new DateTime(2023, 4, 20, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2403),
+                            EmailAddress = "customer6@example.com",
+                            FullName = "Customer 6",
+                            ModifiedBy = "John Doe",
+                            PhoneNo = "1234567890"
+                        },
+                        new
+                        {
+                            Id = new Guid("651ce050-0a72-4c98-8516-a480046f7955"),
+                            Birthday = new DateTime(1995, 5, 17, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2412),
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 13, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2411),
+                            CustomerAddressId = 7,
+                            DateModified = new DateTime(2023, 5, 15, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2409),
+                            EmailAddress = "customer7@example.com",
+                            FullName = "Customer 7",
+                            ModifiedBy = "John Doe",
+                            PhoneNo = "1234567890"
+                        },
+                        new
+                        {
+                            Id = new Guid("8adb2040-5ab8-47b9-9a76-a4d58ec90ce3"),
+                            Birthday = new DateTime(2004, 5, 17, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2419),
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 4, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2417),
+                            CustomerAddressId = 8,
+                            DateModified = new DateTime(2023, 5, 15, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2416),
+                            EmailAddress = "customer8@example.com",
+                            FullName = "Customer 8",
+                            ModifiedBy = "John Doe",
+                            PhoneNo = "1234567890"
+                        },
+                        new
+                        {
+                            Id = new Guid("b238ee47-c577-421e-b4d5-d468a018c572"),
+                            Birthday = new DateTime(1995, 5, 17, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2426),
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 5, 9, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2425),
+                            CustomerAddressId = 9,
+                            DateModified = new DateTime(2023, 4, 18, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2423),
+                            EmailAddress = "customer9@example.com",
+                            FullName = "Customer 9",
+                            ModifiedBy = "John Doe",
+                            PhoneNo = "1234567890"
+                        },
+                        new
+                        {
+                            Id = new Guid("31812621-52da-4a8d-b4b8-4e7ea885c651"),
+                            Birthday = new DateTime(1976, 5, 17, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2435),
+                            CreatedBy = "Jane Smith",
+                            CreatedDate = new DateTime(2023, 4, 23, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2433),
+                            CustomerAddressId = 10,
+                            DateModified = new DateTime(2023, 4, 25, 21, 49, 44, 508, DateTimeKind.Local).AddTicks(2431),
+                            EmailAddress = "customer10@example.com",
+                            FullName = "Customer 10",
+                            ModifiedBy = "John Doe",
+                            PhoneNo = "1234567890"
+                        });
                 });
 
             modelBuilder.Entity("TWMS.Domain.Models.Order.Order", b =>
@@ -138,8 +423,8 @@ namespace TWMS.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CustomerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DateModified")
                         .HasColumnType("datetime2");
@@ -391,11 +676,9 @@ namespace TWMS.Infrastructure.Migrations
 
             modelBuilder.Entity("TWMS.Domain.Models.Staff.Staff", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
