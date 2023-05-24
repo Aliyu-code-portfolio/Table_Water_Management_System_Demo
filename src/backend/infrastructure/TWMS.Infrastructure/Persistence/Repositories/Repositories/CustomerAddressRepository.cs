@@ -21,6 +21,12 @@ namespace TWMS.Infrastructure.Persistence.Repositories.Repositories
             Add(customerAddress);
         }
 
+        public async Task DeleteCustomerAddress(Guid id)
+        {
+            var address = await FindByConditionAsync(item => item.CustomerId == id, false);
+            Delete(address);
+        }
+
         public async Task<CustomerAddress> GetCustomerAddress(Guid? id) => await FindByConditionAsync(item => item.CustomerId == id, false);
 
         public void UpdateCustomerAddress(CustomerAddress customerAddress)

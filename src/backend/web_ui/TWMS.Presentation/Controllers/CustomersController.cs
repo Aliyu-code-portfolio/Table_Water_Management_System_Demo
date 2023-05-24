@@ -71,9 +71,9 @@ namespace TWMS.Presentation.Controllers
         }
         //Deletes customer from DB
         [HttpDelete("{id:Guid}")]
-        public ActionResult RemoveCustomer(Guid id)
+        public async Task<ActionResult> RemoveCustomer(Guid id)
         {
-            _serviceManager.CustomerService.RemoveCustomer(id);
+            await _serviceManager.CustomerService.RemoveCustomer(id);
             return Ok($"Successfully deleted Customer {id}");
         }
         /*[HttpGet("search")]

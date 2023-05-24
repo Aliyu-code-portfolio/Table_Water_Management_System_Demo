@@ -13,6 +13,6 @@ namespace TWMS.Application.Contracts
         Task<CustomerAddress> GetCustomerAddress(Guid? id);
         void AddCustomerAddress(CustomerAddress customerAddress);
         void UpdateCustomerAddress(CustomerAddress customerAddress);
-
+        Task DeleteCustomerAddress(Guid id);
     }
 }

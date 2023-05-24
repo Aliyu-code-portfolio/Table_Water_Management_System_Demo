@@ -59,7 +59,7 @@ namespace TWMS.Infrastructure.Services
             return _repository.customerRepository.GetTotalNumberOfCustomersAsync();
         }
 
-        public void RemoveCustomer(Guid id)
+        public async Task RemoveCustomer(Guid id)
         {
             var customerToRetrieve = GetCustomerByIdAsync(id);
             if(customerToRetrieve is null)
@@ -68,6 +68,7 @@ namespace TWMS.Infrastructure.Services
             }
             var customer = _mapper.Map<Customers>(customerToRetrieve.Result);
             _repository.customerRepository.DeleteCustomer(customer);
+            await _repository.customerAddressRepository.DeleteCustomerAddress(id);
             _repository.Save();
         }
 

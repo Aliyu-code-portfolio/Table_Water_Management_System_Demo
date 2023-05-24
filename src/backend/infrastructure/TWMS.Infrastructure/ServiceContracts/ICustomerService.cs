@@ -14,7 +14,7 @@ namespace TWMS.Infrastructure.ServiceContracts
         Task<IEnumerable<CustomerToRetrieve>> GetAllCustomers();
         Task<CustomerToRetrieve> GetCustomerByIdAsync(Guid id);
         CustomerToRetrieve AddCustomer(CustomerToSave customer);
-        void RemoveCustomer(Guid id);
+        Task RemoveCustomer(Guid id);
         Task UpdateCustomerData(Guid id, CustomerToSave customer);
         Task<int> GetCustomerCount();
     }
