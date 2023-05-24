@@ -13,6 +13,6 @@ namespace TWMS.Domain.Models.Staff
         [StringLength(10)]
         public string? Title { get; set; }
 
-        public ICollection<Staff> Staff { get; set; }
+        public ICollection<Staff>? Staff { get; set; }
     }
 }

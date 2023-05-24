@@ -11,18 +11,21 @@ namespace TWMS.Domain.Models.Staff
 {
     public class StaffAddress : AuditableBaseEntity
     {
+        [Key]
+       // [ForeignKey(nameof(Staff))]
+        public Guid StaffId { get; set; }
         public int BuildingNumber { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? StreetName { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? AreaLocality { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? Landmark { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? City { get; set; }
         public int Zip_PostalCode { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? State_Province { get; set; }
-        public ICollection<Staff> Staff { get; set; }
+        public ICollection<Staff>? Staff { get; set; }
     }
 }

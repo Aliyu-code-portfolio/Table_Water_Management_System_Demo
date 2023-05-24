@@ -8,7 +8,7 @@ using TWMS.Domain.Models.Order;
 
 namespace TWMS.Application.Contracts
 {
-    public interface IOrderItemService:IRepositoryBase<OrderItem>
+    public interface IOrderItemRepository
     {
     }
 }

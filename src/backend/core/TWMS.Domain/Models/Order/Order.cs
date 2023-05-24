@@ -7,10 +7,14 @@ namespace TWMS.Domain.Models.Order
 {
     public class Order:AuditableBaseEntity
     {
-        public int CustomerId { get; set; }
-        [Column(TypeName="money")]
+        [Key]
+        public int Id { get; set; }
+        [ForeignKey(nameof(Customer))]
+        public Guid CustomerId { get; set; }
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "money")]
         public decimal TotalCost { get; set; }
-        public Customers Customer { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public Customers? Customer { get; set; }
+        public ICollection<OrderItem>? OrderItems { get; set; }
     }
 }

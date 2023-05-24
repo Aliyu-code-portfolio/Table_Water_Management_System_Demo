@@ -11,18 +11,20 @@ namespace TWMS.Domain.Models.Customer
 {
     public class CustomerAddress : AuditableBaseEntity
     {
+        [Key]
+        public Guid CustomerId { get; set; }
         public int BuildingNumber { get; set; }
-        [StringLength(50)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? StreetName { get; set; }
-        [StringLength(50)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? AreaLocality { get; set; }
-        [StringLength(50)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? Landmark { get; set; }
-        [StringLength(50)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? City { get; set; }
         public int Zip_PostalCode { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? State_Province { get; set; }
-        public ICollection<Customers> Customers { get; set; }
+        public ICollection<Customers>? Customers { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,18 +11,21 @@ namespace TWMS.Domain.Models.Staff
 {
     public class GuarantorAddress : AuditableBaseEntity
     {
+        [Key]
+        //[ForeignKey(nameof(Guarantor))]
+        public Guid StaffId { get; set; }
         public int BuildingNumber { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? StreetName { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? AreaLocality { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? Landmark { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? City { get; set; }
         public int Zip_PostalCode { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? State_Province { get; set; }
-        //public ICollection<Guarantor> Guarantors { get; set; }
+        public ICollection<Guarantor>? Guarantors { get; set; }
     }
 }

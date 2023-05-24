@@ -5,7 +5,7 @@ using TWMS.Domain.Models.Product;
 
 namespace TWMS.Application.Contracts
 {
-    public interface IProductService:IRepositoryBase<ProductType>
+    public interface IProductRepository
     {
 
     }

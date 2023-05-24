@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace TWMS.Domain.Commons
 {
-    public abstract class AuditableBaseEntity:IBaseEntity
+    public abstract class AuditableBaseEntity
     {
-        public int Id { get; set; }
-        [StringLength(50)]
+        [MaxLength(50,ErrorMessage ="Must be less than 50")]
         public string? ModifiedBy { get; set; }
         public DateTime DateModified { get; set; }
         [StringLength(50)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? CreatedBy { get; set; }
         public DateTime CreatedDate { get; set;}=DateTime.Now;
     }

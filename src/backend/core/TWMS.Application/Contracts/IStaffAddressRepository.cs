@@ -8,7 +8,7 @@ using TWMS.Domain.Models.Staff;
 
 namespace TWMS.Application.Contracts
 {
-    public interface IStaffService:IRepositoryBase<Staff>
+    public interface IStaffAddressRepository
     {
     }
 }

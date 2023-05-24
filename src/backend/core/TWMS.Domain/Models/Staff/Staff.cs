@@ -11,21 +11,28 @@ namespace TWMS.Domain.Models.Staff
 {
     public class Staff : AuditableBaseEntity
     {
-        [StringLength(20)]
+        [Key]
+        public Guid Id { get; set; }
+        [Required(ErrorMessage ="First name is required")]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? FirstName { get; set; }
-        [StringLength(20)]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? LastName { get; set; }
         public DateTime Birthday { get; set; }
         [StringLength(7)]
+        [Required(ErrorMessage ="Gender is required")]
         public string? Gender { get; set; }
-        [StringLength(11)]
+        [MaxLength(15, ErrorMessage = "Must be less than 15")]
+        [Required]
         public string? PhoneNo { get; set; }
-        [StringLength(50)]
+        [Required]
+        [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? EmailAddress { get; set; }
         //Foreign key
-        [ForeignKey(nameof(StaffAddress))]
-        public int StaffAddressId { get; set; }
-        public int JobTitleId { get; set; }
+        /*[ForeignKey(nameof(StaffAddress))]
+        public int StaffAddressId { get; set; }*/
+        public int? JobTitleId { get; set; }
+        [DataType(DataType.Currency)]
         [Column(TypeName = "money")]
         public decimal Salary { get; set; }
         public DateTime DateJoined { get; set; }
@@ -33,10 +40,10 @@ namespace TWMS.Domain.Models.Staff
         // [ForeignKey(nameof(Staff))]
         //public int ReportsTo { get; set; }
         //Foreign key
-        [ForeignKey(nameof(Guarantor))]
-        public int GuarantorId { get; set; }
+        /*[ForeignKey(nameof(Guarantor))]
+        public int GuarantorId { get; set; }*/
 
-        public Guarantor Guarantor { get; set; }
-        public StaffAddress StaffAddress { get; set; }
+        public Guarantor? Guarantor { get; set; }
+        public StaffAddress? StaffAddress { get; set; }
     }
 }

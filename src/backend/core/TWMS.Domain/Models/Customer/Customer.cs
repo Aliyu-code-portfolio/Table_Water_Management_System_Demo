@@ -9,19 +9,23 @@ namespace TWMS.Domain.Models.Customer
 {
     public class Customers : AuditableBaseEntity
     {
-        [StringLength(20)]
+        [Key]
+        public Guid Id { get; set; }
+        [MaxLength(100,ErrorMessage ="Full name must not be more than 100 characters")]
+        [Required(ErrorMessage ="Full name is required")]
         public string? FullName { get; set; }
         public DateTime Birthday { get; set; }
-        [StringLength(11)]
+        [MaxLength(15,ErrorMessage ="Phone number cannot be more than 15 characters")]
         public string? PhoneNo { get; set; }
-        [StringLength(50),Required(ErrorMessage ="Email Address is required")]
+        [MaxLength(50),Required(ErrorMessage ="Email Address is required")]
         public string? EmailAddress { get; set; }
+
         //Add customer ID in Sales table
         //Foreign key
-        [ForeignKey(nameof(CustomerAddress))]
-        public int CustomerAddressId { get; set; }
+        /*[ForeignKey(nameof(CustomerAddress))]
+        public int? CustomerAddressId { get; set; }*/
 
-        public CustomerAddress CustomerAddress { get; set; }
-        //public ICollection<OrderItem> Orders { get; set; }
+        public CustomerAddress? CustomerAddress { get; set; }
+        public ICollection<OrderItem>? Orders { get; set; }
     }
 }
