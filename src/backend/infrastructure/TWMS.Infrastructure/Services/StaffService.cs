@@ -10,9 +10,9 @@ using TWMS.Infrastructure.Persistence.Repositories;
 
 namespace TWMS.Infrastructure.Services
 {
-    public class StaffService: RepositoryBase<Staff>, IStaffService
+    public class StaffService: RepositoryBase<Staff>, IStaffRepository
     {
-        public StaffService(AppDbContext appDbContext):base(appDbContext)
+        public StaffService(RepositoryContext appDbContext):base(appDbContext)
         {
             
         }

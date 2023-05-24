@@ -10,10 +10,10 @@ using TWMS.Infrastructure.Persistence.Repositories;
 
 namespace TWMS.Infrastructure.Services
 {
-    public class ProductService:RepositoryBase<ProductType>,IProductService
+    public class ProductService:RepositoryBase<ProductType>,IProductRepository
     {
-        private readonly AppDbContext _appDbContext;
-        public ProductService(AppDbContext appDbContext):base(appDbContext)
+        private readonly RepositoryContext _appDbContext;
+        public ProductService(RepositoryContext appDbContext):base(appDbContext)
         {
             _appDbContext = appDbContext;
         }

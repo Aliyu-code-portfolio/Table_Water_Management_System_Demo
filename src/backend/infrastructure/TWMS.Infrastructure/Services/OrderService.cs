@@ -10,12 +10,23 @@ using TWMS.Infrastructure.Persistence.Repositories;
 
 namespace TWMS.Infrastructure.Services
 {
-    public class OrderService:RepositoryBase<Order>,IOrderService
+    public class OrderService:RepositoryBase<Order>,IOrderRepository
     {
-        private readonly AppDbContext _appDbContext;    
-        public OrderService(AppDbContext appDbContext):base(appDbContext)
+        private readonly RepositoryContext _appDbContext;    
+        public OrderService(RepositoryContext appDbContext):base(appDbContext)
         {
             _appDbContext = appDbContext;
         }
+        /*public override void Add(Order order)
+        {
+            var availableItems = _appDbContext.Inventory;
+            foreach( var item in order.OrderItems)
+            {
+
+            }
+        }*/
+
+
+
     }
 }

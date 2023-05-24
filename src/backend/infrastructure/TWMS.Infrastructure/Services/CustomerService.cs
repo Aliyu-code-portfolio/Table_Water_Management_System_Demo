@@ -1,148 +1,83 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TWMS.Application.Contracts;
+using TWMS.Application.CommonContracts;
 using TWMS.Domain.Models.Customer;
-using TWMS.Domain.Models.Order;
-using TWMS.Infrastructure.Persistence.DBContext;
-using TWMS.Infrastructure.Persistence.Repositories;
+using TWMS.DTOs.InputDTOs;
+using TWMS.DTOs.OutputDTOs;
+using TWMS.Infrastructure.Exceptions;
+using TWMS.Infrastructure.ServiceContracts;
 
 namespace TWMS.Infrastructure.Services
 {
-    public class CustomerService:RepositoryBase<Customers>,ICustomerService
+    internal sealed class CustomerService:ICustomerService
     {
-        private readonly AppDbContext _appDbContext;
-        public CustomerService(AppDbContext appDbContext) : base(appDbContext)
-        {
-            _appDbContext = appDbContext;
+        private readonly IRepositoryManager _repository;
+        private readonly ILoggerManager _logger;
+        private readonly IMapper _mapper;
 
+        public CustomerService(IRepositoryManager repositoryManager, IMapper mapper)
+        {
+            _repository = repositoryManager;
+            _mapper = mapper;
         }
 
-        //Method to get a list of customers that have made a minTmum total amount of orders
-        public async Task<IEnumerable<Customers>> GetCustomersByOrderTotalAsync(decimal minTotal)
+        public CustomerToRetrieve AddCustomer(CustomerToSave customerDTO)
         {
-            //Testing needed
-            List<Customers> customers = new();
+            var customer = _mapper.Map<Customers>(customerDTO);
+            _repository.customerRepository.AddCustomer(customer);
+            _repository.Save();
 
-            IEnumerable<Order> orders = await _appDbContext.Order.ToListAsync();
-            Dictionary<int,decimal> orderTotal = new Dictionary<int,decimal>();
-            foreach (var order in orders)
+            var customerReturn = _mapper.Map<CustomerToRetrieve>(customer);
+            return customerReturn;
+        }
+
+        public async Task<IEnumerable<CustomerToRetrieve>> GetAllCustomers()
+        {
+            var campanies = await _repository.customerRepository.GetAllCustomers();
+            if(campanies is null)
             {
-                if (orderTotal.ContainsKey(order.CustomerId))
-                {
-                    orderTotal[order.CustomerId] += order.TotalCost;
-                }
-                else
-                {
-                    orderTotal.Add(order.CustomerId, order.TotalCost);
-                }
+                throw new NotFoundException("No Customer Found");
             }
-            foreach(var customerOrder in orderTotal)
-            {
-                if(customerOrder.Value >=minTotal) 
-                { 
-                    var customer = await _appDbContext.Customers.Where(id => id.Id == customerOrder.Key).FirstOrDefaultAsync();
-                    customers.Add(customer);
-                }
-            }
-            return customers;
+            var companiesToReturn = _mapper.Map<IEnumerable<CustomerToRetrieve>>(campanies);
+            return companiesToReturn;
         }
 
-        public async Task<IEnumerable<Customers>> GetCustomersBySearchAsync(string searchTerm)
+        public async Task<CustomerToRetrieve> GetCustomerByIdAsync(Guid id)
         {
-            //Testing needed
-            if (DateTime.TryParse(searchTerm, CultureInfo.CurrentCulture, out DateTime dateTime))
+            var customer = await _repository.customerRepository.GetCustomerById(id);
+            if(customer is null)
             {
-                return await _appDbContext.Customers.Where(customer => customer.FullName == searchTerm || customer.CreatedDate == dateTime || customer.Birthday == dateTime).ToListAsync();
+                throw new CustomerNotFoundException(id);
             }
-            else
+            return _mapper.Map<CustomerToRetrieve>(customer);
+        }
+
+        public Task<int> GetCustomerCount()
+        {
+            return _repository.customerRepository.GetTotalNumberOfCustomersAsync();
+        }
+
+        public void RemoveCustomer(Guid id)
+        {
+            var customerToRetrieve = GetCustomerByIdAsync(id);
+            if(customerToRetrieve is null)
             {
-                return await _appDbContext.Customers.Where(customer=> customer.FullName == searchTerm).ToListAsync();
+                throw new CustomerNotFoundException(id);
             }
-            
+            var customer = _mapper.Map<Customers>(customerToRetrieve.Result);
+            _repository.customerRepository.DeleteCustomer(customer);
+            _repository.Save();
         }
 
-        public async Task<IEnumerable<Customers>> GetCustomersByStreetNameAsync(string streetName)
+        public async Task UpdateCustomerData(Guid id, CustomerToSave customerReceived)
         {
-            //Test needed
-            //Considering refactoring the whole code to use appDbContext instead of using ICustomerAddressService DI
-            var allCustomerAddress = await _appDbContext.CustomerAddresses.Where(address => address.StreetName.ToLower() == streetName.ToLower()).ToListAsync();
-            List<Customers> customers = new();
-            foreach (var address in allCustomerAddress)
-            {
-                var result = await _appDbContext.Customers.Where(customer => customer.CustomerAddressId == address.Id).FirstOrDefaultAsync();
-                customers.Add(result);
-            }
-            return customers.OrderBy(customer => customer.FullName);
-
+            var customer = await _repository.customerRepository.GetCustomerById(id) ?? throw new CustomerNotFoundException(id);
+            var customerToUpdate = _mapper.Map<Customers>(customerReceived);
+            customerToUpdate.Id = id;
+            _repository.customerRepository.UpdateCustomer(customerToUpdate);
+            _repository.Save();
         }
-
-        public async Task<IEnumerable<Customers>> GetNewestCustomersAsync(int numbersToTake)
-        {
-            var allCustomers = await _appDbContext.Customers.ToListAsync();
-            return allCustomers.OrderByDescending(item=>item.CreatedDate).Take(numbersToTake);
-        }
-
-        public async Task<IEnumerable<Customers>> GetOldestCustomersAsync(int numbersToTake)
-        {
-            var allCustomers = await _appDbContext.Customers.ToListAsync();
-            return allCustomers.OrderBy(item=>item.CreatedDate).Take(numbersToTake);
-        }
-
-        public async Task<decimal> GetCustomerOrderTotalAmountAsync(int customerId)
-        {
-            //Test needed
-            IEnumerable<Order> customerOrder = await _appDbContext.Order.Where(order => order.CustomerId == customerId).ToListAsync();
-            decimal totalAmount = 0;
-            foreach(var order in customerOrder)
-            {
-                totalAmount += order.TotalCost;
-            }
-            return totalAmount;
-        }
-
-        public async Task<IEnumerable<Customers>> GetTopCustomersAsync(int number)
-        {
-            //Testing needed
-            List<Customers> customers = new();
-
-            IEnumerable<Order> orders = await _appDbContext.Order.ToListAsync();
-            Dictionary<int, decimal> orderTotal = new Dictionary<int, decimal>();
-            foreach (var order in orders)
-            {
-                if (orderTotal.ContainsKey(order.CustomerId))
-                {
-                    orderTotal[order.CustomerId] += order.TotalCost;
-                }
-                else
-                {
-                    orderTotal.Add(order.CustomerId, order.TotalCost);
-                }
-            }
-            //var orderRanking = orderTotal.OrderDescending();
-            int count = 0;
-            foreach (var customerOrder in orderTotal.OrderByDescending(key=>key.Value))
-            {
-                if (count < number)
-                {
-                    var customer = _appDbContext.Customers.Where(customers => customers.Id == customerOrder.Key).FirstOrDefault();
-                    customers.Add(customer);
-                    count++;
-                }
-            }
-            return customers;
-        }
-
-        public async Task<int> GetTotalNumberOfCustomersAsync()
-        {
-            var allCustomers = await _appDbContext.Customers.ToListAsync();
-            return allCustomers.Count;
-        }
-   
     }
 }
