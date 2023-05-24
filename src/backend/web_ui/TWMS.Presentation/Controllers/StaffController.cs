@@ -2,19 +2,18 @@
 using TWMS.Application.Contracts;
 using TWMS.Domain.Models.Customer;
 using TWMS.Domain.Models.Staff;
-using TWMS.Infrastructure_Help.Post_Model.Staff;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace TWMS.WebAPI.Controllers
+namespace TWMS.Presentation.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/staffs")]
     [ApiController]
     public class StaffController : ControllerBase
     {
-        private readonly IStaffService _staffService;
+        /*private readonly IStaffRepository _staffService;
       
-        public StaffController (IStaffService staffService)
+        public StaffController (IStaffRepository staffService)
         {
             _staffService = staffService;
         }
@@ -30,7 +29,7 @@ namespace TWMS.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Staff>> Get(int id)
         {
-            var customer =await _staffService.GetByIdAsync(false, id);
+            var customer =await _staffService.GetByConditionAsync(item=>item.Id==id,false);
             return Ok(customer);
         }
 
@@ -90,8 +89,8 @@ namespace TWMS.WebAPI.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            _staffService.DeleteById(id); 
+            //_staffService.DeleteById(id); 
             return NoContent();
-        }
+        }*/
     }
 }
