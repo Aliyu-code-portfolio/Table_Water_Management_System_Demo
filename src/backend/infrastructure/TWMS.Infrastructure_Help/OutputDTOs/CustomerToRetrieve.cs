@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TWMS.DTOs.OutputDTOs
 {
-    public record CustomerToRetrieve
+    public sealed record CustomerToRetrieve
     {
         public Guid Id { get; init; }
         public string? FullName { get; init; }

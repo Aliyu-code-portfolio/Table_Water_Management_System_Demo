@@ -23,11 +23,11 @@ namespace TWMS.Infrastructure.Persistence.Repositories.Repositories
 
         public async Task DeleteCustomerAddress(Guid id)
         {
-            var address = await FindByConditionAsync(item => item.CustomerId == id, false);
+            var address =  FindByConditionAsync(item => item.CustomerId == id, false).Result.FirstOrDefault();
             Delete(address);
         }
 
-        public async Task<CustomerAddress> GetCustomerAddress(Guid? id) => await FindByConditionAsync(item => item.CustomerId == id, false);
+        public async Task<CustomerAddress> GetCustomerAddress(Guid? id) =>  FindByConditionAsync(item => item.CustomerId == id, false).Result.FirstOrDefault();
 
         public void UpdateCustomerAddress(CustomerAddress customerAddress)
         {

@@ -31,7 +31,7 @@ namespace TWMS.Presentation.Controllers
 
         //Get by Id
         [HttpGet("{id:Guid}")]
-        public async Task<ActionResult<CustomerToRetrieve>> GetCustomerById(Guid id)
+        public async Task<ActionResult> GetCustomerById(Guid id)
         {
             var customer = await _serviceManager.CustomerService.GetCustomerByIdAsync(id);
             return Ok(customer);

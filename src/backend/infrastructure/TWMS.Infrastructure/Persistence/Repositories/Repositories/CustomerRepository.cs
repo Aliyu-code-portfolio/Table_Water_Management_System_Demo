@@ -35,7 +35,7 @@ namespace TWMS.Infrastructure.Persistence.Repositories.Repositories
             Add(c);
         }
         public Task<IQueryable<Customers>> GetAllCustomers()=> FindAllAsync(false);
-        public async Task<Customers> GetCustomerById(Guid? id) => await FindByConditionAsync(customer => customer.Id == id, false);
+        public async Task<Customers> GetCustomerById(Guid? id) =>  FindByConditionAsync(customer => customer.Id == id, false).Result.FirstOrDefault();
         
         //Method to get a list of customers that have made a minTmum total amount of orders
         public async Task<IEnumerable<Customers>> GetCustomersByOrderTotalAsync(decimal minTotal)

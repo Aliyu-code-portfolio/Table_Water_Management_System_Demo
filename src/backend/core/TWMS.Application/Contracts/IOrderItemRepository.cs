@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TWMS.Application.CommonContracts;
 using TWMS.Domain.Models.Order;
 
 namespace TWMS.Application.Contracts
 {
     public interface IOrderItemRepository
     {
+        void AddOrderItem(OrderItem item);
+        void UpdateOrderItem(OrderItem item);
+        void DeleteOrderItem(OrderItem item);
+        Task<ICollection<OrderItem>> GetItemsByProductType(int productTypeId);
+        Task<ICollection<OrderItem>> GetItemsByOrderId(int orderId);
     }
 }

@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace TWMS.Infrastructure.Persistence.Repositories
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class, new()
+    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class, new()
     {
         private RepositoryContext _AppDbContext;
 
@@ -29,11 +29,10 @@ namespace TWMS.Infrastructure.Persistence.Repositories
                     _AppDbContext.Set<T>().AsNoTracking();
         }
 
-        public async Task<T?> FindByConditionAsync(Expression<Func<T, bool>> expression, bool trackChanges)
+        public async Task<ICollection<T?>> FindByConditionAsync(Expression<Func<T?, bool>> expression, bool trackChanges)
         {
-           return trackChanges? await _AppDbContext.Set<T>().AsTracking().FirstOrDefaultAsync(expression): 
-                                 await _AppDbContext.Set<T>().AsNoTracking().FirstOrDefaultAsync(expression);
-            
+           return trackChanges? await _AppDbContext.Set<T>().AsTracking().Where(expression).ToListAsync(): 
+                                 await _AppDbContext.Set<T>().AsNoTracking().Where(expression).ToListAsync();
         }
 
         public void Update(T entity)

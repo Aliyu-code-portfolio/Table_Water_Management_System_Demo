@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TWMS.DTOs.OutputDTOs
 {
-    public record AddressToRetrieve
+    public sealed record AddressToRetrieve
     {
         public Guid CustomerId { get; init; }
         public int BuildingNumber { get; init; }

@@ -33,8 +33,12 @@ namespace TWMS.Infrastructure.Persistence.DBContext
             modelBuilder.Entity<StaffAddress>()
                 .HasKey(e => new { e.StaffId });
             List<Guid> ids = new List<Guid>();
+            List<OrderItem> items = new List<OrderItem>();
             modelBuilder.ApplyConfiguration(new CustomerConfiguration(ref ids));
             modelBuilder.ApplyConfiguration(new CustomerAddressConfiguration(ids));
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration(ids,ref items));
+            modelBuilder.ApplyConfiguration(new OrderItemConfiguration(items));
         }
     }
 }

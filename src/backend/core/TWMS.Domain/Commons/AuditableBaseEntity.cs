@@ -11,10 +11,10 @@ namespace TWMS.Domain.Commons
     {
         [MaxLength(50,ErrorMessage ="Must be less than 50")]
         public string? ModifiedBy { get; set; }
-        public DateTime DateModified { get; set; }
+        public DateTimeOffset DateModified { get; set; }
         [StringLength(50)]
         [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? CreatedBy { get; set; }
-        public DateTime CreatedDate { get; set;}=DateTime.Now;
+        public DateTimeOffset CreatedDate { get; set;}=DateTime.Now;
     }
 }

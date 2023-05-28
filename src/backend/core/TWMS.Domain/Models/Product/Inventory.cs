@@ -16,14 +16,14 @@ namespace TWMS.Domain.Models.Product
         public int Quantity { get; set; } = 0;
         [ForeignKey(nameof(ProductType))]
         public int? ProductTypeId { get; set; }
+        public string? ProductName { get; set; }
         [DataType(DataType.Currency)]
         [Column(TypeName = "money")]
         public double ProductionCost { get; set; }
-        public DateTime DateProduced { get; set; }
         [DataType(DataType.Currency)]
         [Column(TypeName = "money")]
         public double RetailPricePerUnit { get; set; }
 
-        public ICollection<ProductType>? Products { get; set;}
+        public virtual ICollection<ProductType>? Products { get; set;}
     }
 }

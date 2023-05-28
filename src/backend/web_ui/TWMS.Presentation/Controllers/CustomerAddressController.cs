@@ -15,7 +15,7 @@ namespace TWMS.Presentation.Controllers
         {
             _serviceManager = serviceManager;
         }
-        // GET: api/<OrdersController>
+        // GET customer address
         [HttpGet(Name = "GetCustomerAddress")]
         public async Task<ActionResult> GetCustomerAddress(Guid customerId)
         {
@@ -23,7 +23,7 @@ namespace TWMS.Presentation.Controllers
             return Ok(address);
         }
 
-        // POST api/<OrdersController>
+        // POST a new customer address for customers without address
         [HttpPost]
         public async Task<ActionResult> AddAddress(Guid customerId, [FromBody] AddressToSave addressToSave)
         {
@@ -55,6 +55,5 @@ namespace TWMS.Presentation.Controllers
             return "value";
         }*/
 
-        // PUT api/<OrdersController>/5
     }
 }

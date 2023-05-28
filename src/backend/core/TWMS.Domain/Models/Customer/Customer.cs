@@ -19,13 +19,7 @@ namespace TWMS.Domain.Models.Customer
         public string? PhoneNo { get; set; }
         [MaxLength(50),Required(ErrorMessage ="Email Address is required")]
         public string? EmailAddress { get; set; }
-
-        //Add customer ID in Sales table
-        //Foreign key
-        /*[ForeignKey(nameof(CustomerAddress))]
-        public int? CustomerAddressId { get; set; }*/
-
-        public CustomerAddress? CustomerAddress { get; set; }
-        public ICollection<OrderItem>? Orders { get; set; }
+        public virtual CustomerAddress? CustomerAddress { get; set; }
+        public virtual ICollection<OrderItem>? Orders { get; set; }
     }
 }

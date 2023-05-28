@@ -28,6 +28,6 @@ namespace TWMS.Domain.Models.Staff
         //Foreign key
         /*public int GuarantorAddressId { get; set; }*/
 
-        public GuarantorAddress? GuarantorAddress { get; set; }
+        public virtual GuarantorAddress? GuarantorAddress { get; set; }
     }
 }

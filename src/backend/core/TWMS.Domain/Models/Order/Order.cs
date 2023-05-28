@@ -14,7 +14,8 @@ namespace TWMS.Domain.Models.Order
         [DataType(DataType.Currency)]
         [Column(TypeName = "money")]
         public decimal TotalCost { get; set; }
-        public Customers? Customer { get; set; }
-        public ICollection<OrderItem>? OrderItems { get; set; }
+        public bool IsActive { get; set; } = true;
+        public virtual Customers? Customer { get; set; }
+        public virtual ICollection<OrderItem>? OrderItems { get; set; }
     }
 }

@@ -10,5 +10,13 @@ namespace TWMS.Application.Contracts
 {
     public interface IOrderRepository
     {
+        Task<Order> GetCustomersOrderById(int id);
+        Task<ICollection<Order?>> GetAllCustomersOrder(Guid customerId);
+        Task<ICollection<Order>> GetAllCustomersPendingOrder(Guid customerId);
+        Task<ICollection<Order>> GetAllCustomerOrderByDate(Guid customerId, DateTime? orderDate);
+        Task<Order> GetLatestCustomerOrder(Guid customerId);
+        void CreateOrder(Order order);
+        void UpdateOrder(Order order);
+        void DeleteOrder(Order order);
     }
 }

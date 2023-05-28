@@ -25,6 +25,6 @@ namespace TWMS.Domain.Models.Customer
         public int Zip_PostalCode { get; set; }
         [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? State_Province { get; set; }
-        public ICollection<Customers>? Customers { get; set; }
+        public virtual ICollection<Customers>? Customers { get; set; }
     }
 }

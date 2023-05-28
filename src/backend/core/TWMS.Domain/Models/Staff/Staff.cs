@@ -43,7 +43,7 @@ namespace TWMS.Domain.Models.Staff
         /*[ForeignKey(nameof(Guarantor))]
         public int GuarantorId { get; set; }*/
 
-        public Guarantor? Guarantor { get; set; }
-        public StaffAddress? StaffAddress { get; set; }
+        public virtual Guarantor? Guarantor { get; set; }
+        public virtual StaffAddress? StaffAddress { get; set; }
     }
 }

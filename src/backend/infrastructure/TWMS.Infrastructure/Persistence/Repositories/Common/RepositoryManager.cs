@@ -26,6 +26,8 @@ namespace TWMS.Infrastructure.Persistence.Repositories
             _repositoryContext = repositoryContext;
             _customerRepository = new Lazy<ICustomerRepository>(() => new CustomerRepository(repositoryContext));
             _customerAddressRepository= new Lazy<ICustomerAddressRepository>(() => new CustomerAddressRepository(repositoryContext));
+            _orderRepository=new Lazy<IOrderRepository>(()=> new OrderRepository(repositoryContext));
+            _orderItemRepository=new Lazy<IOrderItemRepository>(()=> new OrderItemRepository(repositoryContext));
         }
         public ICustomerRepository customerRepository => _customerRepository.Value;
 
@@ -37,9 +39,9 @@ namespace TWMS.Infrastructure.Persistence.Repositories
 
         public IProductRepository productRepository => throw new NotImplementedException();
 
-        public IOrderRepository orderRepository => throw new NotImplementedException();
+        public IOrderRepository orderRepository => _orderRepository.Value;
 
-        public IOrderItemRepository orderItemRepository => throw new NotImplementedException();
+        public IOrderItemRepository orderItemRepository => _orderItemRepository.Value;
 
         public void Save()
         {

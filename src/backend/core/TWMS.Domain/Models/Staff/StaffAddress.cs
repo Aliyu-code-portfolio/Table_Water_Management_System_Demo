@@ -26,6 +26,6 @@ namespace TWMS.Domain.Models.Staff
         public int Zip_PostalCode { get; set; }
         [MaxLength(50, ErrorMessage = "Must be less than 50")]
         public string? State_Province { get; set; }
-        public ICollection<Staff>? Staff { get; set; }
+        public virtual ICollection<Staff>? Staff { get; set; }
     }
 }

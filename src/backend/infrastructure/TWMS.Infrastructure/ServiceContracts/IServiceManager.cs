@@ -10,5 +10,6 @@ namespace TWMS.Infrastructure.ServiceContracts
     {
         ICustomerService CustomerService { get; }
         ICustomerAddressService CustomerAddressService { get; }
+        IOrderOrderItemService OrderOrderItemService { get; }
     }
 }
